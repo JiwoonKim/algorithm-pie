@@ -1,13 +1,14 @@
 /**
- *  Given a set of elements and number k, 
+ *  Given a set of unique elements and a number k, 
  *  create all the possible k-sized permutations.
  *  (may contain duplicate chars)
  * 
  *  * Solutions:
  * 
- *    (1) BACKTRACKING: O( N! ) time and O(1) of O(N!) extra space
+ *    (1) BACKTRACKING: O( N * nPk ) time and O(n) extra space
+ *        -> recursively build up to k-length permutations
  * 
- *    (2) use STL next_permutation(?)
+ *    (2) cut to k-length subvector of all permutations: O( N^2 * N! ) time and O(nPk) extra space
  * 
  * 
  *  ** What I learned
@@ -16,68 +17,102 @@
  *        : create all possible k-sized permutations
  *          -> use only k number elements of elements from set to create permutations
  * 
- *          => 경우의 수: (N! / (N-K)!)
- *                       = n * (n-1) * (n-2) * ... * (n-k+1) cases
+ *        => (N! / (N-K)!)
+ *            = n * (n-1) * (n-2) * ... * (n-k+1) cases
  * 
- *             ex. 4P4 = 4 * 3 * 2 * 1 ; if (k==n) => same as creating all permutations of string
- *                 4P3 = 4 * 3 * 2
- *                 4P2 = 4 * 3
- *                 4P1 = 4
+ *            ex. 4P4 = 4 * 3 * 2 * 1 ; if (k==n) => create all permutations
+ *                4P3 = 4 * 3 * 2
+ *                4P2 = 4 * 3
+ *                4P1 = 4
+ * 
  * 
  *     ** how to use BACKTRACKING
- *        (1)
+ *        (to recursively build up to k-length permutations)
  * 
+ *        (1) 
  * 
- *     ** k-length string <-> substring, subsequence
- *        - k-length string (= permutation): REARRANGEMENT of characters
- *        - substring, subsequence: must FOLLOW char order in original string
- *          -> substring: cannot take out middle chars (ex. "abc" -> "ac" X)
- *          -> subsequence: can take out middle chars (ex. "abc" -> "ac" possible)
+ *        ex. ([], [a b c]) where k = 2
+ *                          -> (A, [b c]) -> (AB, [c]) => AB
+ *                                        -> (AC, [b]) => AC
+ *                          -> (B, [a c]) -> (BA, [c]) => BA
+ *                                        -> (BC, [a]) => BC
+ *                          -> (C, [a b]) -> (CA, [b]) => CA
+ *                                        -> (CB, [a]) => CB
+ * 
+ *     cf) cut to k-length subvector of all permutations
+ *         -> create all permutations (n-length; nPn) using STL next_permutation: O(N * N!) time
+ *         -> cut each permutations from (first ~ kth)
+ *         -> insert that subvector into unordered_set to make sure duplicates don't exist
+ * 
+ *         ex. abc
+ *             -> abc: AB
+ *             -> acb: AC
+ *             -> bac: BA
+ *             -> bca: BC
+ *             -> cab: CA
+ *             -> cba: CB
+ * 
+ *        -> inefficient in both time and space
+ *        => use backtracking method instead
  * 
 */
 #include <bits/stdc++.h>
 using namespace std;
 
-/**
- *  (1) backtracking
+/** (1) backtracking
+ *      -> build up permutation to length k
  */
-vector<string> permutationsOfK(string s, int k) {
+vector<vector<int>> permute(vector<int>& nums, int k) {
 
-    vector<string> permutations;
+    // create space to store permutations
+    vector<vector<int>> permutations;
 
-    // set default available chars
-    unordered_map<char, bool> available;
-    for (char c : s) {
-        available[c] = true;
+    // initialize all available numbers
+    unordered_map<int, bool> available;
+    for (int num : nums) {
+        available[num] = true;
     }
 
-    /** use backtracking function to build strings up to k-length
-     *  -> start from empty string ""
-     */ 
-    go(k, available, "");
+    // use backtracking to create permutations
+    vector<int> empty;
+    go_back(k, empty, available, permutations);
+
     return permutations;
 }
-void go(int k, unordered_map<char, bool> available, string str_sofar) {
-    /** base case
-     *  : if string reached length of k 
-     *    -> insert string in collection and terminate
+
+/** helper function
+ *  : recursively build up k-length permutations
+ */ 
+void go_back(int k, vector<int> prefix, unordered_map<int, bool> available, vector<vector<int>> permutations) {
+
+    /** BASE case
+     *  : if prefix's length == number of elements (used all elements)
+     *    -> finished creating a permutation
      */ 
-    if (str_sofar.length() == k) {
-        permutations.push_back(str_sofar);
-        return;
+    if (prefix.size() == k) {
+        permutations.push_back(prefix);
     }
-    /** recursive case
-     *  : build strings up to k-length
-     *    -> append one of the available chars and recurse on it
-     *       (erase that char from available collection temporarily
-     *        to mark that it has already been used and cannot be reused)
+
+    /** RECURSIVE case
+     *  : append each available element to prefix
+     *    and call recursion on it (until prefix == permutation)
+     *    backtrack to original prefix for next element
      */ 
     for (auto pair : available) {
-        char c = pair.first;
-        if (available[c]){
-            available[c] = false;
-            go(k, available, str_sofar + c);
-            available[c] = true;
+        int key = pair.first;
+        if (available[key]) {
+            /** append available element to prefix
+             *  and mark that element inavailable
+             */ 
+            prefix.push_back(key);
+            available[key] = false;
+
+            // call recursion
+            go_back(k, prefix, available, permutations);
+
+            // backtrack
+            prefix.pop_back();
+            available[key] = true;
         }
     }
 }

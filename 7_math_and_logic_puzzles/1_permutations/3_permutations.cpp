@@ -4,10 +4,10 @@
  * 
  *  * Solutions:
  * 
- *    (1) brute-force: O( N * N! ) time and O(1) extra space
+ *    (1) brute-force: O( N * N! ) time and O(n) extra space
  *        -> use STL next_permutations to iterate over all permutations
  * 
- *    (2) backtracking: O( N * N! ) time and O(1) extra space
+ *    (2) backtracking: O( N * N! ) time and O(n) extra space
  *        
  *        (2-a) use swap + backtracking to create all permutations
  *              -> swap n element w/ (n-1) elements
@@ -15,8 +15,9 @@
  *              -> backtrack back to previous step and move to next element
  *              => swap values in N-for-N loops (using recursion)
  * 
- *        (2-b) recursively build up k-length permutations
- *              -> 
+ *        (2-b) recursively build up to k-length permutations
+ *              -> same as (7(1)-4. nPk permutations) problem solution
+ *                 where (k == total number of elements; nPn)
  * 
  * 
  *  ** What I learned
@@ -29,19 +30,6 @@
  *       => nPn = N! (factorial cases)
  *          -> takes O(n) to create each permutation
  *          => O(N * N!) time (and extra space if storing)
- * 
- * 
- *     ** DUPLICATE elements
- *        - if all elements are NOT unique, there can be duplicate permutations
- *          -> need to eliminate duplicates
- * 
- *        => total of (N! / a! b!)
- *           - if there are (a) number of duplicates of one element
- *             and (b) number of duplicates of one element,
- *             -> divide the total number of permutations by (a!) and (b!)
- * 
- *        => take advantage of using UNORDERED_SETS to eliminate duplicates
- *           or use next_permutation (which functionality itself does NOT create duplicate permutations)
  * 
  * 
  *     ** BACKTRACKING
@@ -66,6 +54,18 @@
  * 
  *               -> (start: 1, i: 3) => CBA -> (start: 2, i: 2) => CBA -> (start: 3. i: 3) => [ CBA ]
  *                                          -> (start: 2, i: 3) => CAB -> (start: 3, i: 3) => [ CAB ]
+ * 
+ *     ** DUPLICATE elements
+ *        - if all elements are NOT unique, duplicate permutations exists
+ *          -> need to ELIMINATE duplicate permutation
+ * 
+ *        => (N! / a! b!)
+ *           - if there are (a) number of duplicates of one element
+ *             and (b) number of duplicates of one element,
+ *             -> divide the total number of permutations by (a!) and (b!)
+ * 
+ *        => take advantage of using UNORDERED_SETS to eliminate duplicates
+ *           or use next_permutation (which functionality itself does NOT create duplicate permutations)
  * 
 */
 #include <bits/stdc++.h>

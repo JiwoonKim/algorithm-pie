@@ -29,7 +29,7 @@
     - use `backtracking` to `swap` values in __N-for-N loops__
     - use STL `next_permutation()` or for convenience (sort prior to using)
 4. `create nPk permutations` (7(1)-2. nPk permutations :star:)
-    - use `backtracking` to __build up k-length permutations__
+    - use `backtracking` to __build up to k-length permutations__
 4. `use backtracking to create all lengthed permutations` (7(1)-5 all length permutations :fire:)
     - nP1 + nP2 + ... + nPn-1 + nPn
     - use `backtracking` to build up k-length permutations
