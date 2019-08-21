@@ -25,3 +25,13 @@
 - combinations
 - primality test
 - euclid algorithm
+- Find kth Permutation
+- Integer Division
+- Pythagorean Triplets
+- All Sum Combinations
+- Find Missing Number
+- Permute String
+- All Subsets
+- Is Number Valid?
+- Power of a Number
+- Calculate Square Root
