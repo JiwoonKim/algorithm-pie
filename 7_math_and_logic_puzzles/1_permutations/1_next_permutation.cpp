@@ -1,5 +1,5 @@
 /**
- *  Given a string s, update to next permutation.
+ *  Given an order of elements, update to next permutation.
  * 
  *  * Solutions:
  * 
@@ -46,14 +46,12 @@ using namespace std;
 /** 
  *  (1) swap and sort
  */
-bool nextPermutation(string& s) {
-
-    int last = s.length() - 1;
+bool nextPermutation(vector<int>& v) {
 
     // find rightmost char satisfying ascending order
-    int swapPoint = last;
-    for (int i = last; i > 0; i--) {
-        if (s[i] > s[i-1]) {
+    int swapPoint = v.size(); - 1;
+    for (int i = swapPoint; i > 0; i--) {
+        if (v[i] > v[i-1]) {
             swapPoint = i - 1;
             break;
         }
@@ -62,15 +60,15 @@ bool nextPermutation(string& s) {
     /** if rightmost char is last char, no next permutation
      *  (bcuz current state already is the last permutation)
      */ 
-    if (swapPoint == last) return false;
+    if (swapPoint == v.size() - 1) return false;
 
     /** next, find char next in order to swap with
      *  -> on the right side of swapPoint,
      *     find smallest value that is larger than swapPoint's value
      */ 
     int otherPoint = swapPoint + 1;
-    for (int i = swapPoint + 1; i <= last; i++) {
-        if (s[i] > s[swapPoint] && s[i] < s[otherPoint]) {
+    for (int i = swapPoint + 1; i <= v.size() - 1; i++) {
+        if (v[i] > v[swapPoint] && v[i] < v[otherPoint]) {
             otherPoint= i;
         }
     }
@@ -78,16 +76,16 @@ bool nextPermutation(string& s) {
     /** swap two values
      *  -> updating to next permutation order (start ~ lastIndex)
      */ 
-    swap(s[swapPoint], s[otherPoint]);
+    swap(v[swapPoint], v[otherPoint]);
 
     /** reorder the rest in ascending order
      *  => update rest part (lastIndex + 1 ~ end)
      */ 
-    sort(s.begin() + swapPoint + 1, s.end());
+    sort(v.begin() + swapPoint + 1, v.end());
     return true;
 }
 
 /** 
  *  (2) use STL next_permutation
  */
-next_permutation(s.begin(), s.end());
+next_permutation(v.begin(), v.end());

@@ -3,7 +3,7 @@
  * 
  *  * Solutions:
  * 
- *    (1) swap and sort: O(n) time, O(1) space
+ *    (1) brute-force: O(n) time, O(1) space
  * 
  *  ** What I learned
  */

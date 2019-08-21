@@ -23,10 +23,13 @@
 ### 7. Math and Logic Puzzles
 
 #### Permutations & Combinations
-1. `how to change to next permutation` (7(1)-1. next permutation)
-2. `find k-th permutation` 
-3. 
-- permutations,
+1. `how to create next permutation` (7(1)-1. next permutation)
+2. `figure out k-th permutation` 
+3. `create all permutations` & `create nPk permutations` (7(1)-3. permutations & 7(1)-2. nPk permutations :star:)
+    - use `backtracking`
+    - use STL `next_permutation()` or for convenience (+ sort prior to using)
+4. `use backtracking to create all lengthed permutations` (7(1)-5 all length permutations :fire:)
+    - nP1 + nP2 + ... + nPn-1 + nPn
 - combinations
 - primality test
 - euclid algorithm
