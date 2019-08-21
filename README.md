@@ -4,19 +4,24 @@
 ## :wrench: Useful Mechanisms To Remember
 > list of useful mechanisms (functions) to remember
 
-### 0. Brute Force
-
 ### 1. Sorting
 
 ### 2. Searching
 
-### Backtracking
-leetcode - combination
-
-#### + Graph Algorithms
-
 ### 3. Greedy Algorithm
 
-### 4. Divide and Conquer
+### 4. Dynamic Programming
 
-### 5. Dynamic Programming
+### 5. Backtracking
+> a method of brute-force search (a.k.a exhaustive search)
+- permutation
+- n queen problem
+- sudoku
+
+### 6. Graph Algorithms
+
+### 7. Math and Logic Puzzles
+- permutations, next permutation
+- combinations
+- primality test
+- euclid algorithm
