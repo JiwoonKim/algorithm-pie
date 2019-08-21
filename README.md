@@ -21,8 +21,11 @@
 ### 6. Graph Algorithms
 
 ### 7. Math and Logic Puzzles
-1. `how to change to next permutation` (7-1. next permutation)
-2. 
+
+#### Permutations & Combinations
+1. `how to change to next permutation` (7(1)-1. next permutation)
+2. `find k-th permutation` 
+3. 
 - permutations,
 - combinations
 - primality test

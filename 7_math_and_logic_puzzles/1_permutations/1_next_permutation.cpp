@@ -15,12 +15,7 @@
  *  ** What I learned
  * 
  *     * PERMUTATION
- *       : creating order using the given elements
- *         -> if given n elements to create permutation,
- *            in general, it means to USE ALL ELEMENTS to create permutations
- * 
- *       => total of N! (factorial cases)
- *          -> takes O( N! ) time (and extra space if storing) * 
+ *       : a way elements are ordered
  * 
  * 
  *     ** NEXT_PERMUTATION function
