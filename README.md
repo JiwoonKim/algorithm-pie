@@ -21,7 +21,9 @@
 ### 6. Graph Algorithms
 
 ### 7. Math and Logic Puzzles
-- permutations, next permutation
+1. `how to change to next permutation` (7-1. next permutation)
+2. 
+- permutations,
 - combinations
 - primality test
 - euclid algorithm
