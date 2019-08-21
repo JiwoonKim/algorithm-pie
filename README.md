@@ -1,4 +1,4 @@
-# algorithm-pie :birthday:
+# algorithm-pie :custard:
 > collection of common algorithm problems
 
 ## :wrench: Useful Mechanisms To Remember
