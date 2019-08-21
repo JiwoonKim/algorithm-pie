@@ -25,11 +25,14 @@
 #### Permutations & Combinations
 1. `how to create next permutation` (7(1)-1. next permutation)
 2. `figure out k-th permutation` 
-3. `create all permutations` & `create nPk permutations` (7(1)-3. permutations & 7(1)-2. nPk permutations :star:)
-    - use `backtracking`
-    - use STL `next_permutation()` or for convenience (+ sort prior to using)
+3. `create all permutations` (7(1)-3. permutations :fire:)
+    - use `backtracking` to `swap` values in __N-for-N loops__
+    - use STL `next_permutation()` or for convenience (sort prior to using)
+4. `create nPk permutations` (7(1)-2. nPk permutations :star:)
+    - use `backtracking` to __build up k-length permutations__
 4. `use backtracking to create all lengthed permutations` (7(1)-5 all length permutations :fire:)
     - nP1 + nP2 + ... + nPn-1 + nPn
+    - use `backtracking` to build up k-length permutations
 - combinations
 - primality test
 - euclid algorithm

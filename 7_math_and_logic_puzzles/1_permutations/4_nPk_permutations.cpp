@@ -35,7 +35,6 @@
  *          -> subsequence: can take out middle chars (ex. "abc" -> "ac" possible)
  * 
 */
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -44,10 +43,12 @@ using namespace std;
  */
 vector<string> permutationsOfK(string s, int k) {
 
+    vector<string> permutations;
+
     // set default available chars
     unordered_map<char, bool> available;
     for (char c : s) {
-        available.[c] = true;
+        available[c] = true;
     }
 
     /** use backtracking function to build strings up to k-length
