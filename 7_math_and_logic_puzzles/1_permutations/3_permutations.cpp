@@ -14,10 +14,14 @@
  *              -> repeat recursively until done
  *              -> backtrack back to previous step and move to next element
  *              => swap values in N-for-N loops (using recursion)
+ *              (building one permutation = swap n times; O(n),
+ *               total of permutation: N!)
  * 
  *        (2-b) recursively build up to k-length permutations
  *              -> same as (7(1)-4. nPk permutations) problem solution
  *                 where (k == total number of elements; nPn)
+ *              (building one permutation = "" -> n length; O(n),
+ *               total of permutation: N!)
  * 
  * 
  *  ** What I learned

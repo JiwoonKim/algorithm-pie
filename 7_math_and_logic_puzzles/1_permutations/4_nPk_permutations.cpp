@@ -5,11 +5,14 @@
  * 
  *  * Solutions:
  * 
- *    (1) BACKTRACKING: O( N * nPk ) time and O(n) extra space
+ *    (1) BACKTRACKING: O( k * nPk ) time and O(n) extra space
  *        -> recursively build up to k-length permutations
+ *           (building one permutation = "" -> k length; O(k),
+ *            total of permutation: nPk)
  * 
  *    (2) cut to k-length subvector of all permutations: O( N^2 * N! ) time and O(nPk) extra space
- * 
+ *        (creating all permutations: O(N * N!),
+ *         cut each permuations to subvector: O(N) )
  * 
  *  ** What I learned
  * 
@@ -41,7 +44,7 @@
  * 
  *     cf) cut to k-length subvector of all permutations
  *         -> create all permutations (n-length; nPn) using STL next_permutation: O(N * N!) time
- *         -> cut each permutations from (first ~ kth)
+ *         -> cut each permutations from (first ~ kth): * O(n)
  *         -> insert that subvector into unordered_set to make sure duplicates don't exist
  * 
  *         ex. abc
