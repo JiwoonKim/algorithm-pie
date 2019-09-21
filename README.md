@@ -22,7 +22,7 @@
 
 ### 7. Math and Logic Puzzles
 
-#### Permutations & Combinations
+#### + Permutations
 1. `how to create next permutation` (7(1)-1. next permutation)
 2. `figure out k-th permutation` 
 3. `create all permutations` (7(1)-3. permutations :fire:)
@@ -30,10 +30,15 @@
     - use STL `next_permutation()` or for convenience (sort prior to using)
 4. `create nPk permutations` (7(1)-2. nPk permutations :fire:)
     - use `backtracking` to __build up to k-length permutations__
-4. `use backtracking to create all lengthed permutations` (7(1)-5 all length permutations :fire:)
+5. `use backtracking to create all lengthed permutations` (7(1)-5. all length permutations :fire:)
     - nP1 + nP2 + ... + nPn-1 + nPn
     - use `backtracking` to build up k-length permutations
-- combinations
+
+#### + Combinations
+1. (7(2)-1. combinations :fire:)
+2. (7(2)-2. all length combinations :fire:)
+3. use `no count + counting principle` to count number of all possible length combinations (7(2)-3. count all combinations :rocket:)
+
 - primality test
 - euclid algorithm
 - Find kth Permutation

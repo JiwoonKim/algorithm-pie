@@ -1,7 +1,7 @@
 /**
  *  Given a set of unique elements and a number k, 
  *  create all the possible k-sized permutations.
- *  (may contain duplicate chars)
+ *  (repetition is not allowed; if one element was already used, cannot use in same permutation)
  * 
  *  * Solutions:
  * 
