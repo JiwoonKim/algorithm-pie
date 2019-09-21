@@ -1,6 +1,8 @@
 # algorithm-pie :custard:
 > collection of common algorithm problems
 
+> https://www.geeksforgeeks.org/top-algorithms-and-data-structures-for-competitive-programming/#algo4
+
 ## :wrench: Useful Mechanisms To Remember
 > list of useful mechanisms (functions) to remember
 
